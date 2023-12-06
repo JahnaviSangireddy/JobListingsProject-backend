@@ -2,12 +2,20 @@ package com.jahnavi.JobListingProject.entities;
 
 import java.util.Arrays;
 
-import org.springframework.data.mongodb.core.mapping.Document;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Document(collection = "JobListings")
+@Entity
 public class JobPost {
 
-	//private int id;
+	@Id
+	@GeneratedValue
+	private int id;
+	@Column(name = "jobName")
 	private String profile;
 	private int exp;
 	private String desc;
@@ -17,9 +25,22 @@ public class JobPost {
 		super();
 	}
 	
-	/*
-	 * public int getId() { return id; } public void setId(int id) { this.id = id; }
-	 */
+	
+	public JobPost(int id, String profile, int exp, String desc, String[] techs) {
+		super();
+		this.profile = profile;
+		this.exp = exp;
+		this.desc = desc;
+		this.techs = techs;
+	}
+
+	public int getId() { 
+		return id; 
+	} 
+	public void setId(int id) { 
+		this.id = id; 
+	}
+	 
 	public String getProfile() {
 		return profile;
 	}
